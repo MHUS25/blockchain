@@ -13,3 +13,9 @@ class Block {
     return SHA256(this.index + this.timestamp + JSON.stringify(this.data) + this.previousHash).toString();
   }
 }
+
+class Blockchain {
+  constructor() {
+
+  }
+}
