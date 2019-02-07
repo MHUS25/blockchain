@@ -34,7 +34,7 @@ class Blockchain {
   }
 
   isChainValid() {
-    for (i = 1; i < this.chain.length; i++) {
+    for (let i = 1; i < this.chain.length; i++) {
       const currentBlock = this.chain[i];
       const previousBlock = this.chain[i - 1];
 
@@ -42,7 +42,7 @@ class Blockchain {
         return false;
       }
 
-      if (currentBlock.previousHash !== previousHash.hash) {
+      if (currentBlock.previousHash !== previousBlock.hash) {
         return false;
       }
     }
