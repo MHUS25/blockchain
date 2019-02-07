@@ -25,5 +25,7 @@ describe("Blockchain", () => {
     fakeCoin.addBlock(new Block(2, "7/02/2019", { amount: 20 }));
     console.log(fakeCoin);
     expect((fakeCoin.isChainValid())).toEqual(true);
+    fakeCoin.chain[1].data = { amount: 100 };
+    expect((fakeCoin.isChainValid())).toEqual(false);
   });
 });
