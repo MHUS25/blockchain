@@ -9,9 +9,9 @@ class Transaction {
 }
 
 class Block {
-  constructor(timestamp, data, previousHash = '') {
+  constructor(timestamp, transaction, previousHash = '') {
     this.timestamp = timestamp;
-    this.data = data;
+    this.transaction = transaction;
     this.previousHash = previousHash;
     this.hash = this.calculateHash();
     this.nonce = 0;
