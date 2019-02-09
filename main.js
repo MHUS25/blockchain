@@ -1,8 +1,7 @@
 const SHA256 = require('crypto-js/sha256');
 
 class Block {
-  constructor(index, timestamp, data, previousHash = '') {
-    this.index = index;
+  constructor(timestamp, data, previousHash = '') {
     this.timestamp = timestamp;
     this.data = data;
     this.previousHash = previousHash;
@@ -11,7 +10,7 @@ class Block {
   }
 
   calculateHash(){
-    return SHA256(this.index + this.timestamp + JSON.stringify(this.data) + this.previousHash + this.nonce).toString();
+    return SHA256(this.timestamp + JSON.stringify(this.data) + this.previousHash + this.nonce).toString();
   }
 
   mineBlock(difficulty){
@@ -31,7 +30,7 @@ class Blockchain {
   }
 
   createGenesisBlock() {
-    return new Block(0, "06/02/2019", "Genesis block", "0");
+    return new Block("06/02/2019", "Genesis block", "0");
   }
 
   getLatestBlock() {
