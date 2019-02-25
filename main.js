@@ -59,8 +59,23 @@ class Blockchain {
     ];
   }
 
-  createTransaction(transaction){
+  createTransaction(transaction) {
     this.pendingTransactions.push(transaction);
+  }
+
+  getBalanceOfAddress(address) {
+    let balance = 0;
+
+    for (const block of this.chain) {
+      for (const trans of block.transactions) {
+        if (trans.fromAddress === address) {
+          balance -= trans.amount;
+        }
+        if (trans.toAddress === address) {
+          balance += trans.amount;
+        }
+      }
+    }
   }
 
   isChainValid() {
