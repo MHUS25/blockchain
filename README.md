@@ -6,3 +6,4 @@ Features:
 * Proof of work
 * Transactions
 * Mining rewards
+* Signing transactions with private keys
