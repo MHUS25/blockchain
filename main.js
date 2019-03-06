@@ -92,7 +92,7 @@ class Blockchain {
     ];
   }
 
-  createTransaction(transaction) {
+  addTransaction(transaction) {
     this.pendingTransactions.push(transaction);
   }
 
@@ -120,7 +120,7 @@ class Blockchain {
       if (!currentBlock.hasValidTransactions()){
         return false;
       }
-      
+
       if (currentBlock.hash !== currentBlock.calculateHash()) {
         return false;
       }
