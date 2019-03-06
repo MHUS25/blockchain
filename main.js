@@ -21,6 +21,12 @@ class Block {
     return SHA256(this.timestamp + JSON.stringify(this.data) + this.previousHash + this.nonce).toString();
   }
 
+  signTransaction(signingKey){
+    hashTx = this.calculateHash();
+    const sig = signingKey.sign(hashTx, 'base64');
+    this.signature = sig.toDER('hex');
+  }
+
   mineBlock(difficulty){
     while (this.hash.substring(0, difficulty) != Array(difficulty + 1).join("0")) {
       this.nonce++;
