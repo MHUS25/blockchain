@@ -8,5 +8,5 @@ Features:
 * Mining rewards
 * Signing transactions with private keys
 
-#Acknowledgements
-Followed part of [this](https://www.youtube.com/watch?v=zVqczFZr124) tutorial
+### Acknowledgements
+Followed parts of [this](https://www.youtube.com/watch?v=zVqczFZr124) tutorial
