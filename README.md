@@ -1,6 +1,6 @@
 # blockchain
 
-A blockchain implementation written in JavaScript and tested using Jasmine.
+A blockchain crypto currency implementation written in JavaScript and tested using Jasmine.
 
 Features:
 * Proof of work
