@@ -31,6 +31,17 @@ class Block {
     this.signature = sig.toDER('hex');
   }
 
+  isValid(){
+    if (this.fromAddress === null) return true;
+
+    if (!this.signature || this.signature.length === 0){
+      throw new Error('No signature in this transaction')
+    }
+
+    const publicKey = ec.keyFromPublic(this.fromAddress, 'hex');
+    return publicKey.verify(this.calculateHash(), this.signature);
+  }
+
   mineBlock(difficulty){
     while (this.hash.substring(0, difficulty) != Array(difficulty + 1).join("0")) {
       this.nonce++;
