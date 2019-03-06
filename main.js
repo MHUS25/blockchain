@@ -117,6 +117,10 @@ class Blockchain {
       const currentBlock = this.chain[i];
       const previousBlock = this.chain[i - 1];
 
+      if (!currentBlock.hasValidTransactions()){
+        return false;
+      }
+      
       if (currentBlock.hash !== currentBlock.calculateHash()) {
         return false;
       }
