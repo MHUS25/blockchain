@@ -22,6 +22,10 @@ class Block {
   }
 
   signTransaction(signingKey){
+    if (signingKey.getPublic('hex') !== this.fromAddress){
+      throw new Error('You cannot sign transaction for other wallets')
+    }
+
     hashTx = this.calculateHash();
     const sig = signingKey.sign(hashTx, 'base64');
     this.signature = sig.toDER('hex');
