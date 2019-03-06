@@ -8,20 +8,7 @@ class Transaction {
     this.toAddress = toAddress;
     this.amount = amount;
   }
-}
 
-class Block {
-  constructor(timestamp, transaction, previousHash = '') {
-    this.timestamp = timestamp;
-    this.transaction = transaction;
-    this.previousHash = previousHash;
-    this.hash = this.calculateHash();
-    this.nonce = 0;
-  }
-
-  calculateHash(){
-    return SHA256(this.timestamp + JSON.stringify(this.data) + this.previousHash + this.nonce).toString();
-  }
 
   signTransaction(signingKey){
     if (signingKey.getPublic('hex') !== this.fromAddress){
@@ -42,6 +29,20 @@ class Block {
 
     const publicKey = ec.keyFromPublic(this.fromAddress, 'hex');
     return publicKey.verify(this.calculateHash(), this.signature);
+  }
+}
+
+class Block {
+  constructor(timestamp, transaction, previousHash = '') {
+    this.timestamp = timestamp;
+    this.transaction = transaction;
+    this.previousHash = previousHash;
+    this.hash = this.calculateHash();
+    this.nonce = 0;
+  }
+
+  calculateHash(){
+    return SHA256(this.timestamp + JSON.stringify(this.data) + this.previousHash + this.nonce).toString();
   }
 
   mineBlock(difficulty){
